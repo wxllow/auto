@@ -9,6 +9,8 @@ abort() {
     exit 1
 }
 
+echo ":)"
+
 # Install extra packages
 echo "Installing extra packages..."
 pacman -S $EXTRAS --noconfirm
