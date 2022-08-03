@@ -1,8 +1,8 @@
-TIMEZONE = "America/New_York"
-LOCALE = 'export LANG="en_US.UTF-8"'
-HOSTNAME = "arch"
-USERNAME = "wl"
-EXTRAS = "vim"
+TIMEZONE="America/New_York"
+LOCALE='export LANG="en_US.UTF-8"'
+HOSTNAME="arch"
+USERNAME="wl"
+EXTRAS="vim"
 
 abort() {
     echo "${1}Aborting..."
