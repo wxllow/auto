@@ -53,8 +53,8 @@ ln -s /usr/bin/doas /usr/bin/sudo || abort "Failed to set up doas. "
 
 # Install grub
 echo "Installing and setting up grub..."
-pacman -S grub --noconfirm || abort "Failed to install grub. "
-grub-install --target=arm64-efi --bootloader-id=grub_uefi --recheck || abort "Failed to set up grub. "
+pacman -S grub efibootmgr --noconfirm || abort "Failed to install grub. "
+grub-install --target=arm64-efi --bootloader-id=grub_uefi --efi-directory=/boot --recheck || abort "Failed to set up grub. "
 grub-mkconfig -o /boot/grub/grub.cfg || abort "Failed to generate grub.cfg. "
 
 echo "Installation is complete! Please reboot."
