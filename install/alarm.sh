@@ -1,5 +1,4 @@
 TIMEZONE="America/New_York"
-LOCALE='export LANG="en_US.UTF-8"'
 HOSTNAME="arch"
 USERNAME="wl"
 EXTRAS="vim"
@@ -22,7 +21,7 @@ hwclock --systohc
 
 # Locale
 echo "Generating locale..."
-echo $LOCALE >>/etc/locale.gen
+vim /etc/locale.gen
 locale-gen || abort "Failed to generate locale. "
 
 # Hostname
