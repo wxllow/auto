@@ -1,10 +1,10 @@
 TIMEZONE="America/New_York"
 HOSTNAME="arch"
 USERNAME="wl"
-EXTRAS="neovim git vim neofetch wget mpv chromium kitty lightdm lightdm-gtk-greeter lightdm-gtk-greeter-settings pipewire-jack pipewire-alsa pipewire-pulse"
+EXTRAS="zsh neovim git vim neofetch wget mpv chromium kitty lightdm lightdm-gtk-greeter lightdm-gtk-greeter-settings pipewire-jack pipewire-alsa pipewire-pulse"
 DRIVE="/dev/sda"
 LOCALE="en_US.UTF-8"
-PREFFERED_SHELL="zsh"
+PREFFERED_SHELL="/bin/zsh"
 
 abort() {
     echo "${1} Aborting..."
@@ -14,14 +14,6 @@ abort() {
 # Update mirrors
 echo "Updating mirrors..."
 pacman -Sy --noconfirm || abort "Failed to update mirrors."
-
-# Install yay
-# echo "Installing AUR helper (yay)..."
-# sudo pacman -S git go --noconfirm || abort "Failed to install dependencies."
-# cd /opt
-# git clone https://aur.archlinux.org/yay-git.git || abort "Failed to clone yay."
-# cd yay-git
-# makepkg -siA || abort "Failed to install yay."
 
 # Install and enable NetworkManager
 echo "Installing and enabling NetworkManager..."
@@ -73,13 +65,6 @@ ln -s /usr/bin/doas /usr/bin/sudo || abort "Failed to set up doas."
 echo "Changing shell to ${PREFFERED_SHELL}..."
 chsh -s $PREFFERED_SHELL || abort "Failed to change shell."
 
-# Getting dotfiles
-echo "Getting dotfiles..."
-cd "/home/${USERNAME}"
-git clone https://git.wxllow.dev/wxllow/dotfiles .dotfiles || abort "Failed to clone dotfiles."
-cd .dotfiles
-./install || abort "Failed to install dotfiles."
-
 # TODO: Support x86_64
 # Install grub
 echo "Installing and setting up grub..."
@@ -87,4 +72,4 @@ pacman -S grub efibootmgr os-prober --noconfirm || abort "Failed to install grub
 grub-install --target=arm64-efi --bootloader-id=grub_uefi --efi-directory=/boot --recheck $DRIVE || abort "Failed to set up grub. "
 grub-mkconfig -o /boot/grub/grub.cfg || abort "Failed to generate grub.cfg."
 os-prober || abort "Failed to run os-prober."
-echo "Installation is complete! Please reboot."
+echo "Installation is complete! Please reboot and then run install/user.sh."
