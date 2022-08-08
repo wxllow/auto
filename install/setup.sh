@@ -16,12 +16,12 @@ echo "Updating mirrors..."
 pacman -Sy --noconfirm || abort "Failed to update mirrors."
 
 # Install yay
-echo "Installing AUR helper (yay)..."
-sudo pacman -S git go --noconfirm || abort "Failed to install dependencies."
-cd /opt
-git clone https://aur.archlinux.org/yay-git.git || abort "Failed to clone yay."
-cd yay-git
-makepkg -siA || abort "Failed to install yay."
+# echo "Installing AUR helper (yay)..."
+# sudo pacman -S git go --noconfirm || abort "Failed to install dependencies."
+# cd /opt
+# git clone https://aur.archlinux.org/yay-git.git || abort "Failed to clone yay."
+# cd yay-git
+# makepkg -siA || abort "Failed to install yay."
 
 # Install and enable NetworkManager
 echo "Installing and enabling NetworkManager..."
